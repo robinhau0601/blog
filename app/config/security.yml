@@ -1,0 +1,23 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface:
+            algorithm: bcrypt
+            cost: 10
+
+    providers:
+        fos_user:
+            id: fos_user.user_provider.username
+
+    firewalls:
+        secured_area:
+            pattern: ^/
+            anonymous: ~
+            form_login:
+                provider: fos_user
+                csrf_provider: form.csrf_provider
+            logout:       true
+
+    access_control:
+        - { path: ^/news/(new|(\d+\/edit)), roles: IS_AUTHENTICATED_FULLY }

@@ -1,0 +1,9 @@
+services:
+    app.form.type.reg:
+        class: AppBundle\Form\Type\RegType
+        arguments:
+            - %fos_user.model.user.class%
+        tags:
+            -
+                name: form.type
+                alias: app_reg
