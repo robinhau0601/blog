@@ -24,6 +24,7 @@
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "knplabs/knp-menu-bundle": "^2.1",
         "gregwar/captcha-bundle": "^1.1"
+
     },
     "scripts": {
         "post-install-cmd": [
@@ -53,5 +54,8 @@
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
         }
+    },
+    "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^2.3"
     }
 }

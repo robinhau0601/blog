@@ -1,0 +1,33 @@
+{% extends '::base.html.twig' %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets 'bundles/ibwjobeet/css/main.css' filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/ibwjobeet/css/job.css') }}" type="text/css" media="all" />
+{% endblock %}
+
+{% block subheader %}
+    {% include 'IbwJobeetBundle:Job:subheader.html.twig' %}
+{% endblock %}
+
+{% block body -%}
+    <div id="jobs">
+        <table class="jobs">
+            {% for entity in entities %}
+                <tr class="{{ cycle(['even', 'odd'], loop.index) }}">
+                    <td class="location">{{ entity.location }}</td>
+                    <td class="position">
+                        <a href="{{ path('ibw_job_show', { 'id': entity.id }) }}">
+                            {{ entity.position }}
+                        </a>
+                    </td>
+                    <td class="company">{{ entity.company }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}

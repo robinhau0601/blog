@@ -18,7 +18,12 @@ class Builder
 
         $menu->addChild('news', [
             'route' => 'news',
-            'label' => '新闻'
+            'label' => '新闻',
+        ]);
+
+        $menu->addChild('job', [
+            'route' => 'ibw_job',
+            'label' => '职位',
         ]);
 
         return $menu;

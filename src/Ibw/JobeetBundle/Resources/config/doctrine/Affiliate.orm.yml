@@ -1,20 +1,37 @@
-Ibw\JobeetBundle\Entity\Category:
+Ibw\JobeetBundle\Entity\Affiliate:
     type: entity
-    table: category
+    table: affiliate
     id:
         id:
             type: integer
             generator: { strategy: AUTO }
     fields:
-        name:
+        url:
             type: string
-            lenght: 255
+            length: 255
+        email:
+            type: string
+            length: 255
             unique: true
-    oneToMany:
-        jobs:
-             targetEntity: Job
-             mappedBy: category
+        token:
+            type: string
+            length: 255
+        is_active:
+            type: boolean
+            nullable: true
+        created_at:
+            type: datetime
     manyToMany:
-        affiliates:
-             targetEntity: affiliate
-             mappedBy: categories
+        categories:
+            targetEntity: Category
+            inversedBy: affiliates
+            joinTable:
+                name: category_affiliate
+                joinColumns:
+                    affiliate_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    category_id:
+                        referencedColumnName: id
+    lifecycleCallbacks:
+        prePersist: [ setCreatedAtValue ]
