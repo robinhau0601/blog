@@ -1,0 +1,20 @@
+Ibw\JobeetBundle\Entity\Category:
+    type: entity
+    table: category
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        name:
+            type: string
+            lenght: 255
+            unique: true
+    oneToMany:
+        jobs:
+             targetEntity: Job
+             mappedBy: category
+    manyToMany:
+        affiliates:
+             targetEntity: affiliate
+             mappedBy: categories
